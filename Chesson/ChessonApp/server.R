@@ -70,7 +70,7 @@ shinyServer(function(input, output, session) {
     
 
     for (i in 1:599){Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
-                    Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)}
+                    Sp2N[i+1]<-Sp2N[i]+Sp1N[i]*Sp2R*((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)}
     
     diffSp1<-NA
     diffSp2<-NA
