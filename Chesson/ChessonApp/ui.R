@@ -4,7 +4,7 @@
 #
 # http://shiny.rstudio.com
 #
-
+?expression
 library(shiny)
 library(markdown)
 
@@ -13,23 +13,31 @@ shinyUI(navbarPage("Chesson Tutorial",
                             # Sidebar with a slider input for number of bins
                             sidebarLayout(
                               sidebarPanel(
-                                helpText(h4("First we create some data for analysis:")),
+                                helpText("First we imagine a species with a growth rate:"),
                                 sliderInput("Lam",
-                                            "Mean Lambda:",
+                                            label=div(HTML("Choose &lambda;:")),
                                             min = .95,
                                             max = 1.05,
                                             value = 1.01),
                                 
-                                sliderInput("sdLam",
-                                            "Std. Dev. of Lambda:",
-                                            min = 0,
-                                            max = .01,
-                                            value = .002),
-                                
+                              
                                 helpText("The slope of the log(N) line, 
                especially at t<30, gives the approximate 
-               long-term low density growth rate")
-                              ),
+               long-term low density growth rate"),
+                                br(),
+                                
+                                radioButtons("sd", "Is there stochastic variation in your population?:",
+                                             c("No" = "no",
+                                               "Yes"= "yes")),
+                                br(),
+                                
+                                sliderInput("sdLam",
+                                            label=c("The Std. Dev of Lambda"),
+                                            min = .01,
+                                            max = .05,
+                                            value = .01)
+                                
+                                ),
                               
                               # Show a plot of the generated distribution
                               mainPanel(
