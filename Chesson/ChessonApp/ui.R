@@ -72,14 +72,14 @@ shinyUI(navbarPage("Chesson Tutorial",
                        sliderInput("a11",
                                    label=c("The effect of species 1 on species 1"),
                                    min = .1,
-                                   max = .5,
-                                   value = .1, step=.05),
+                                   max = 1.2,
+                                   value = .1, step=.1),
                        
                        sliderInput("a22",
                                    label=c("The effect of species 2 on species 2"),
                                    min = .1,
-                                   max = .5,
-                                   value = .1, step=.05),
+                                   max =1.2,
+                                   value = .1, step=.1),
                        br(),
                        
                        radioButtons("incAlpha2", "Do these species interact?:",
@@ -89,14 +89,14 @@ shinyUI(navbarPage("Chesson Tutorial",
                        sliderInput("a21",
                                    label=c("The effect of species 2 on species 1"),
                                    min = .1,
-                                   max = .5,
-                                   value = .1, step=0.05),
+                                   max = 1.2,
+                                   value = .1, step=0.1),
                        
                        sliderInput("a12",
                                    label=c("The effect of species 1 on species 2"),
                                    min = .1,
-                                   max = .5,
-                                   value = .1, step=0.05)
+                                   max = 1.2,
+                                   value = .1, step=0.1)
                                               
                        
                      ),
@@ -105,7 +105,11 @@ shinyUI(navbarPage("Chesson Tutorial",
                      # Show a plot of the generated distribution
                      mainPanel(
                        helpText("Orange line is Species 1, Blue is Species 2"),
-                       plotOutput("LVComp"))                                            )
+                       plotOutput("LVComp"),
+                       helpText("Species can exist when a species 
+                                is more limited by other members of 
+                                its own species, than by members of 
+                                other species; aii>aij or aij/ajj<1"))                                            )
                    ),
                    
                    tabPanel("Relative Nonlinearity"),

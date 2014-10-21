@@ -41,7 +41,7 @@ shinyServer(function(input, output, session) {
   
   output$LVComp <- renderPlot({
   
-    time<-seq(1,200,by=1)
+    time<-seq(1,600,by=1)
     set.seed(13)
     Sp1N<-.01
     Sp2N<-.01
@@ -69,23 +69,23 @@ shinyServer(function(input, output, session) {
                   yes = input$a12) 
     
 
-    for (i in 1:199){Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
+    for (i in 1:599){Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
                     Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)}
     
     diffSp1<-NA
     diffSp2<-NA
     
-    for (i in 1:199){diffSp1[i+1]<-Sp1N[i+1]-Sp1N[i]
+    for (i in 1:599){diffSp1[i+1]<-Sp1N[i+1]-Sp1N[i]
                      diffSp2[i+1]<-Sp2N[i+1]-Sp2N[i]}
     
-    par(mfrow=c(2,2))
+    layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
     plot(Sp1N~time, xlab="Time (t)", 
          ylab="Population size (N)", type="l", 
          col="#E69F00", ylim=c(-2,50), lwd=2)
     points(Sp2N~time, col="#56B4E9", type="l", lwd=2)
     
     plot(diffSp1~time, xlab="Time (t)", ylab="Change (dN/dt)",type="l", 
-         col="#E69F00", lwd=2)
+         col="#E69F00", lwd=2, xlim=c(0,300))
     points(diffSp2~time, col="#56B4E9", type="l", lwd=2)
 
     plot(Sp2N~Sp1N, xlab= "Species 1 (Sp1N)", ylab= "Species 2 (Sp2N)", 
