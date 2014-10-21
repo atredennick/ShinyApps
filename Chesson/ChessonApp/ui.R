@@ -4,7 +4,6 @@
 #
 # http://shiny.rstudio.com
 #
-?expression
 library(shiny)
 library(markdown)
 
@@ -19,8 +18,7 @@ shinyUI(navbarPage("Chesson Tutorial",
                                             min = .95,
                                             max = 1.05,
                                             value = 1.01),
-                                
-                              
+                                                              
                                 helpText("The slope of the log(N) line, 
                especially at t<30, gives the approximate 
                long-term low density growth rate"),
@@ -47,8 +45,68 @@ shinyUI(navbarPage("Chesson Tutorial",
                                 verbatimTextOutput("summary")
                               )
                             )),
-                   
-                   tabPanel("Lotka-Volterra Competition"),
+                  
+                   tabPanel("Lotka-Volterra Competition",
+                    sidebarLayout(
+                     sidebarPanel(
+                       sliderInput("Sp1R",
+                                   label="Species 1 per capita rate of increase",
+                                   min = -.2,
+                                   max = .5,
+                                   value = .1, step=.1),
+                       sliderInput("Sp2R",
+                                   label="Species 2 per capita rate of increase",
+                                   min = -.2,
+                                   max = .5,
+                                   value = .2, step=.1),
+                       br(),
+                       radioButtons("setK", "Is there a Carrying Capacity (K)?",
+                                    c("No" = "no",
+                                      "Yes"= "yes")),
+                       
+                       br(),
+                       radioButtons("incAlpha1", "Do these species negatively affect themselves?:",
+                                    c("No" = "no",
+                                      "Yes"= "yes")),
+                       
+                       sliderInput("a11",
+                                   label=c("The effect of species 1 on species 1"),
+                                   min = .1,
+                                   max = .5,
+                                   value = .1, step=.05),
+                       
+                       sliderInput("a22",
+                                   label=c("The effect of species 2 on species 2"),
+                                   min = .1,
+                                   max = .5,
+                                   value = .1, step=.05),
+                       br(),
+                       
+                       radioButtons("incAlpha2", "Do these species interact?:",
+                                    c("No" = "no",
+                                      "Yes"= "yes")),
+          
+                       sliderInput("a21",
+                                   label=c("The effect of species 2 on species 1"),
+                                   min = .1,
+                                   max = .5,
+                                   value = .1, step=0.05),
+                       
+                       sliderInput("a12",
+                                   label=c("The effect of species 1 on species 2"),
+                                   min = .1,
+                                   max = .5,
+                                   value = .1, step=0.05)
+                                              
+                       
+                     ),
+                                        
+                     
+                     # Show a plot of the generated distribution
+                     mainPanel(
+                       helpText("Orange line is Species 1, Blue is Species 2"),
+                       plotOutput("LVComp"))                                            )
+                   ),
                    
                    tabPanel("Relative Nonlinearity"),
 

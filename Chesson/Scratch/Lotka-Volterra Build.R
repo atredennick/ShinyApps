@@ -10,6 +10,17 @@
 #a21 indicates the effect of species 2 on species 1
 #For species 1, (all parameters for species one start with "Sp1"):
 
+time<-seq(1,100,by=1)
+
+Sp1N<-3
+Sp2N<-3
+
+Sp1R<-input$Sp1R
+Sp2R<-input$Sp2R
+
+grow1<-for (i in 1:99){Sp1N[i+1]<-N[i]*Sp1R[i]}
+grow2<-for (i in 1:99){Sp2N[i+1]<-N[i]*Sp2R[i]}
+
 #In the absence of competition
 Sp1N2<-Sp1N1*Sp1r1 
  
