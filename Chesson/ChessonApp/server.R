@@ -9,8 +9,6 @@ library(shiny)
 
 shinyServer(function(input, output, session) {
   
-
-  
   output$popGrow <- renderPlot({
     
     # generate data based on mean lam and sd in input
@@ -19,7 +17,7 @@ shinyServer(function(input, output, session) {
     Lam<-input$Lam
     sdYN <- switch(input$sd,
                      no = 0,
-                     yes = input$sdLam)
+                     yes = input$sdLam)  #Choose SD based on User input; "breaks" if no is selected and people move the bar.
       
     Li<-rnorm(100, mean=Lam, sd=sdYN)
     N<-3
@@ -27,8 +25,8 @@ shinyServer(function(input, output, session) {
     
     # draw plots
     par(mfrow=c(1,2))
-    plot(N~time, main="Raw data")
-    plot(log(N)~time, main="Log-transformed data", sub="Orange line is a linear model for timesteps 1-30")
+    plot(N~time, xlab="Time (t)", ylab="Number of individuals (N)", main="Raw data")
+    plot(log(N)~time, xlab="Time (t)", main="Log-transformed data")
     fit<-lm(log(N)[1:30]~time[1:30])
     abline(fit, col="orange")
     lm_coef <- signif(coef(fit), 5) # extract coefficients

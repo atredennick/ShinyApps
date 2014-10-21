@@ -21,4 +21,4 @@ runApp("ChessonApp", display.mode = "showcase")
 #  token="token", 
 #  secret="secret")
 
-deployApp("Chesson")
+deployApp("ChessonApp")

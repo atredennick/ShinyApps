@@ -41,10 +41,16 @@ shinyUI(navbarPage("Chesson Tutorial",
                               
                               # Show a plot of the generated distribution
                               mainPanel(
-                                plotOutput("popGrow")
+                                plotOutput("popGrow"),
+                                br(),
+                                helpText("Below is the equation of the orange line, which is a linear model for timesteps 1-30"),
+                                verbatimTextOutput("summary")
                               )
                             )),
                    
-                   tabPanel("Summary",
-                            verbatimTextOutput("summary")
-                   )))
+                   tabPanel("Lotka-Volterra Competition"),
+                   
+                   tabPanel("Relative Nonlinearity"),
+
+                   tabPanel("The Storage Effect")
+                   ))
