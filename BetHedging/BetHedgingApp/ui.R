@@ -11,7 +11,7 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                    tabPanel("One species",
                             sidebarLayout(
                               sidebarPanel(
-                                h4("Enivronmental Effects on Fecundity"),
+                                h4("Environmental Effects on Fecundity"),
                                 
                                 selectInput("mix", label="Environment:", 
                                             list("Constant", "Variable", "Highly.Variable", "Variable2", "Highly.Variable2"),
@@ -54,7 +54,7 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                    tabPanel("Two species comparison",
                             sidebarLayout(
                               sidebarPanel(
-                                h4("Enivronmental Effects on Fecundity"),
+                                h4("Environmental Effects on Fecundity"),
                                 
                                 selectInput("mix2", "Environment:", 
                                             choices=c("Constant", "Variable", "Highly.Variable", "Variable2", "Highly.Variable2")),
