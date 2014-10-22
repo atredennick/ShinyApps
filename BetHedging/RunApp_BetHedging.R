@@ -1,5 +1,5 @@
 #Set your working drive here so that the folder of your app is in the directory
-setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/Chesson/ShinyApps/BetHedging")
+setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/BetHedging")
 
 #If you don't have devtools or shinyapps:
 #install.packages('devtools')
@@ -11,7 +11,6 @@ library(shinyapps)
 
 #Run app locally
 runApp("BetHedgingApp")
-runApp("ChessonApp", display.mode = "showcase")
 
 #Deploy app; 
 
