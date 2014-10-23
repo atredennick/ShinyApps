@@ -96,7 +96,7 @@ shinyUI(navbarPage("Chesson Tutorial",
                                    label=c("The effect of species 1 on species 2"),
                                    min = .1,
                                    max = 1.2,
-                                   value = 1, step=0.1)
+                                   value = 1.1, step=0.1)
                                               
                        
                      ),
@@ -166,10 +166,14 @@ shinyUI(navbarPage("Chesson Tutorial",
                                 
                                 br(),
                                 h4("Check your nonlinearity"),
-                                
+                              
                                 radioButtons("CincNL", "Do these species exhibit nonlinearity?:",
                                              c("No" = "no",
                                                "Yes"= "yes")),
+                                
+                                br(),
+                                helpText("R<-log(x)/(a+b*log(x))"),
+                                
                                 
                                 sliderInput("Sp1a",
                                             label="Species 1 a",
@@ -183,11 +187,12 @@ shinyUI(navbarPage("Chesson Tutorial",
                                             max = .95,
                                             value = .7, step=.05),
                                 
+                                helpText("**Lower this:")
                                 sliderInput("Sp2a",
                                             label="Species 2 a",
                                             min = .05,
                                             max = .95,
-                                            value = .35, step=.05),
+                                            value = .5, step=.05),
                                 
                                 sliderInput("Sp2b",
                                             label="Species 2 b",
