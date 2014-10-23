@@ -140,15 +140,16 @@ shinyServer(function(input, output, session) {
                yes = input$Sp2b)#.9
 
     c<-switch(input$CincNL,
-              no = 1,
-              yes = 0)#.7
+              no = 0,
+              yes = 1)#.7
     
     layout(matrix(c(1,2,3,3), 2, 2, byrow = TRUE))
     x<-seq(1,7, by=.1)
-    y1<-log(x)/(a+b*log(x))
-    y2<-log(x)/(a2+b2*log(x))
-    plot(y1~x, type="l", col="#E69F00", xlab="Resource", ylab="Percent of GR", lwd=2)
-    points(y2~x, type="l", col="#56B4E9", xlab="Resource", ylab="Percent of GR", lwd=2)
+    y1<-c*log(x)/(a+b*log(x))
+    y2<-c*log(x)/(a2+b2*log(x))
+    
+    plot(y1~x, ylim=c(0,1.1), type="l", col="#E69F00", xlab="Resource", ylab="Percent of GR", lwd=2)
+    points(y2~x, ylim=c(0,1.1), type="l", col="#56B4E9", xlab="Resource", ylab="Percent of GR", lwd=2)
     
     set.seed(15)
     x<-rlnorm(n=100, meanlog=log(3), sdlog=log(1.3))
@@ -159,12 +160,12 @@ shinyServer(function(input, output, session) {
     comp2<-NA
 
     for (i in 1:99){
-      resp1[i]<-(log(x[i]))/(a+b*log(x[i]))
-      resp2[i]<-(log(x[i]))/(a2+b2*log(x[i]))
+      resp1[i]<-(c*log(x[i]))/(a+b*log(x[i]))
+      resp2[i]<-(c*log(x[i]))/(a2+b2*log(x[i]))
       comp1[i]<-((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
       comp2[i]<-((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)
-      Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*(c+comp1[i]-resp1[i])
-      Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*(c+comp2[i]-resp2[i])}
+      Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*(comp1[i]+resp1[i])
+      Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*(comp2[i]+resp2[i])}
 
     plot(x~seq(1:100), type="l", xlab="time", ylab="Resource Availability", lwd=2)
     
