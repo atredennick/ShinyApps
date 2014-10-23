@@ -51,21 +51,21 @@ shinyUI(navbarPage("Chesson Tutorial",
                      sidebarPanel(
                        sliderInput("Sp1R",
                                    label="Species 1 per capita rate of increase",
-                                   min = -.2,
-                                   max = .2,
-                                   value = .1, step=.05),
+                                   min = 0,
+                                   max = 1.2,
+                                   value = .3, step=.1),
                        sliderInput("Sp2R",
                                    label="Species 2 per capita rate of increase",
-                                   min = -.2,
-                                   max = .2,
-                                   value = .05, step=.05),
+                                   min = 0,
+                                   max = 1.2,
+                                   value = .4, step=.1),
                        br(),
                        radioButtons("setK", "Is there a Carrying Capacity (K)?",
                                     c("No" = "no",
                                       "Yes"= "yes")),
                        
                        br(),
-                       radioButtons("incAlpha1", "Do these species negatively affect themselves?:",
+                       radioButtons("incAlpha1", "Do these species negatively affect themselves (density dependence)?:",
                                     c("No" = "no",
                                       "Yes"= "yes")),
                        
@@ -73,13 +73,13 @@ shinyUI(navbarPage("Chesson Tutorial",
                                    label=c("The effect of species 1 on species 1"),
                                    min = .1,
                                    max = 1.2,
-                                   value = .1, step=.1),
+                                   value = .2, step=.1),
                        
                        sliderInput("a22",
                                    label=c("The effect of species 2 on species 2"),
                                    min = .1,
                                    max =1.2,
-                                   value = .1, step=.1),
+                                   value = .8, step=.1),
                        br(),
                        
                        radioButtons("incAlpha2", "Do these species interact?:",
@@ -90,13 +90,13 @@ shinyUI(navbarPage("Chesson Tutorial",
                                    label=c("The effect of species 2 on species 1"),
                                    min = .1,
                                    max = 1.2,
-                                   value = .1, step=0.1),
+                                   value = .2, step=0.1),
                        
                        sliderInput("a12",
                                    label=c("The effect of species 1 on species 2"),
                                    min = .1,
                                    max = 1.2,
-                                   value = .1, step=0.1)
+                                   value = 1, step=0.1)
                                               
                        
                      ),
@@ -112,7 +112,102 @@ shinyUI(navbarPage("Chesson Tutorial",
                                 other species; aii>aij or aij/ajj<1"))                                            )
                    ),
                    
-                   tabPanel("Relative Nonlinearity"),
+                   tabPanel("Relative Nonlinearity",
+                            sidebarLayout(
+                              sidebarPanel(
+                                sliderInput("CSp1R",
+                                            label="Species 1 per capita rate of increase",
+                                            min = 0,
+                                            max = 1.2,
+                                            value = .3, step=.1),
+                                sliderInput("CSp2R",
+                                            label="Species 2 per capita rate of increase",
+                                            min = 0,
+                                            max = 1.2,
+                                            value = .4, step=.1),
+                                br(),
+                                radioButtons("CsetK", "Is there a Carrying Capacity (K)?",
+                                             c("No" = "no",
+                                               "Yes"= "yes")),
+                                
+                                br(),
+                                radioButtons("CincAlpha1", "Do these species negatively affect themselves?:",
+                                             c("No" = "no",
+                                               "Yes"= "yes")),
+                                
+                                sliderInput("Ca11",
+                                            label=c("The effect of species 1 on species 1"),
+                                            min = .1,
+                                            max = 1.2,
+                                            value = .2, step=.1),
+                                
+                                sliderInput("Ca22",
+                                            label=c("The effect of species 2 on species 2"),
+                                            min = .1,
+                                            max =1.2,
+                                            value = .8, step=.1),
+                                br(),
+                                
+                                radioButtons("CincAlpha2", "Do these species interact?:",
+                                             c("No" = "no",
+                                               "Yes"= "yes")),
+                                
+                                sliderInput("Ca21",
+                                            label=c("The effect of species 2 on species 1"),
+                                            min = .1,
+                                            max = 1.2,
+                                            value = .2, step=0.1),
+                                
+                                sliderInput("Ca12",
+                                            label=c("The effect of species 1 on species 2"),
+                                            min = .1,
+                                            max = 1.2,
+                                            value = 1, step=0.1),
+                                
+                                br(),
+                                h4("Check your nonlinearity"),
+                                
+                                radioButtons("CincNL", "Do these species exhibit nonlinearity?:",
+                                             c("No" = "no",
+                                               "Yes"= "yes")),
+                                
+                                sliderInput("Sp1a",
+                                            label="Species 1 a",
+                                            min = .05,
+                                            max = .95,
+                                            value = .5, step=.05),
+                                
+                                sliderInput("Sp1b",
+                                            label="Species 1 b",
+                                            min = .05,
+                                            max = .95,
+                                            value = .7, step=.05),
+                                
+                                sliderInput("Sp2a",
+                                            label="Species 2 a",
+                                            min = .05,
+                                            max = .95,
+                                            value = .35, step=.05),
+                                
+                                sliderInput("Sp2b",
+                                            label="Species 2 b",
+                                            min = .05,
+                                            max = .95,
+                                            value = .9, step=.05)
+                                
+                              ),
+                              
+                              
+                              # Show a plot of the generated distribution
+                              mainPanel(
+                                helpText("Orange line is Species 1, Blue is Species 2"),
+                                plotOutput("Chess"),
+                                helpText("Int he L-V model, species can 
+                                coexist when a species 
+                                is more limited by other members of 
+                                its own species, than by members of 
+                                other species; aii>aij or aij/ajj<1"))                                            )
+                   ),
 
                    tabPanel("The Storage Effect")
                    ))
