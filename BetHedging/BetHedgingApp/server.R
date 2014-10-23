@@ -43,7 +43,7 @@ shinyServer(function(input, output) {
     # draw plots
     par(mfrow=c(2,1), mar=c(4,4,1,1))
     plot(L~time, type="l", ylab="Fecundity", xlab="Year", lwd=2, ylim=c(0,maxF))
-    legend(x=65,y=maxF-.1*maxF,"Mean Fecundity", lty=2)
+    legend(x=60,y=maxF-.1*maxF,"Mean Fecundity", lty=2)
     abline(a=mean(L), b=0, lty=2)
     plot(N[N>0]~time[1:length(N[N>0])], type="l", ylab="Population Size", xlab="Year", ylim=c(0,maxN), 
          col="#E69F00", lwd=2, xlim=c(0,100))
@@ -89,7 +89,7 @@ shinyServer(function(input, output) {
     maxy<-min(max(N1,N2),100)
     par(mfrow=c(2,1), mar=c(4,4,1,1))
     plot(L~time, type="l", ylab="Fecundity", xlab="Year", lwd=2)
-    legend(x=65,y=maxF-.1*maxF,"Mean Fecundity", lty=2)
+    legend(x=60,y=maxF-.1*maxF,"Mean Fecundity", lty=2)
     abline(a=mean(L), b=0, lty=2)
     
     plot(N1[N1>0]~time[1:length(N1[N1>0])], type="l", ylab="Population Size", xlab="Year", 

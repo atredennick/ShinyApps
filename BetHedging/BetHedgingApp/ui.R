@@ -6,11 +6,11 @@
 #
 library(shiny)
 library(markdown)
-
+?column
 shinyUI(navbarPage("Bet Hedging Tutorial",
                    tabPanel("One species",
-                            sidebarLayout(
-                              sidebarPanel(
+                          column(4, 
+                              wellPanel(
                                 h4("Environmental Effects on Fecundity"),
                                 
                                 selectInput("mix", label="Environment:", 
@@ -41,10 +41,11 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                                 
                                 helpText("*This wasn't a part of the clasroom acitvity")
                                 
-                                ),
+                                )),
                               
                               # Show a plot of the generated distribution
-                              mainPanel(
+                            column(8, 
+                              wellPanel(
                                 plotOutput("popGrow"),
                                 br(),
                                 helpText("If the line seems to reach zero but pops up again, it is because the population got very close to zero but not exactly. The line will disappear when it actually equals zero.")
@@ -52,8 +53,8 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                               ))),
                    
                    tabPanel("Two species comparison",
-                            sidebarLayout(
-                              sidebarPanel(
+                            column(4, 
+                              wellPanel(
                                 h4("Environmental Effects on Fecundity"),
                                 
                                 selectInput("mix2", "Environment:", 
@@ -96,10 +97,11 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                                 helpText("*This wasn't a part of the clasroom acitvity")
                                 
                                
-                              ),
+                              )),
                               
                               # Show a plot of the generated distribution
-                              mainPanel(
+                              column(8, 
+                                wellPanel(
                                 plotOutput("popGrow2"),
                                 br(),
                                 helpText("If the line seems to reach zero 
