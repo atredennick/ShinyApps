@@ -112,7 +112,7 @@ shinyUI(navbarPage("Chesson Tutorial",
                                 other species; aii>aij or aij/ajj<1"))                                            )
                    ),
                    
-                   tabPanel("Relative Nonlinearity",
+                   tabPanel("War Game Relative Nonlinearity",
                             sidebarLayout(
                               sidebarPanel(
                                 sliderInput("CSp1R",
@@ -187,7 +187,7 @@ shinyUI(navbarPage("Chesson Tutorial",
                                             max = .95,
                                             value = .7, step=.05),
                                 
-                                helpText("**Lower this:")
+                                helpText("**Lower this:"),
                                 sliderInput("Sp2a",
                                             label="Species 2 a",
                                             min = .05,
