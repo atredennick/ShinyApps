@@ -9,4 +9,8 @@ Deployed on: https://brittzinator.shinyapps.io/BetHedgingApp/
 
 - Chesson is a teaching module for ecological niche theory
 
+(Sort of) Deployed on: https://brittzinator.shinyapps.io/ChessonApp/
+
 - Splines is an early trial app by B. Teller
+
+Deployed on: https://brittzinator.shinyapps.io/App-1/
