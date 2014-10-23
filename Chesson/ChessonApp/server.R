@@ -90,6 +90,7 @@ shinyServer(function(input, output, session) {
 
     plot(Sp2N~Sp1N, xlab= "Species 1 (Sp1N)", ylab= "Species 2 (Sp2N)", 
          type="l", col="#009E73", lwd=2, xlim=c(0,100), ylim=c(0,100), sub="still needs isoclines")
+<<<<<<< HEAD
     
     })
   
@@ -110,6 +111,28 @@ shinyServer(function(input, output, session) {
                   no = 0,
                   yes = input$Ca11) 
     
+=======
+    
+    })
+  
+  output$Chess <- renderPlot({
+    
+    time<-seq(1,100,by=1)
+    set.seed(13)
+    Sp1N<-.01
+    Sp2N<-.01
+    Sp1R<-input$CSp1R
+    Sp2R<-input$CSp2R
+    
+    K <- switch(input$CsetK,
+                no = 10*exp(100),
+                yes = 100) 
+    
+    a11 <- switch(input$CincAlpha1,
+                  no = 0,
+                  yes = input$Ca11) 
+    
+>>>>>>> 2fdbc6bcae8322ab271e5a78e785c01789e9f32e
     a22 <- switch(input$CincAlpha1,
                   no = 0,
                   yes = input$Ca22)
@@ -151,6 +174,7 @@ shinyServer(function(input, output, session) {
     
     set.seed(15)
     x<-rlnorm(n=100, meanlog=log(3), sdlog=log(1.3))
+<<<<<<< HEAD
     resp1<-NA
     resp2<-NA
     comp1<-NA
@@ -164,12 +188,31 @@ shinyServer(function(input, output, session) {
       Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*(c+comp1[i]-resp1[i])
       Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*(c+comp2[i]-resp2[i])}
 
+=======
+
+    for (i in 1:99){
+      resp1[i]<-(log(x[i]))/(a+b*log(x[i]))
+      resp2[i]<-(log(x[i]))/(a2+b2*log(x[i]))
+      comp1[i]<-((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
+      comp2[i]<-((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)
+      Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*(c+comp1[i]-resp1[i])
+      Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*(c+comp2[i]-resp2[i])}
+
+>>>>>>> 2fdbc6bcae8322ab271e5a78e785c01789e9f32e
     plot(x~seq(1:100), type="l", xlab="time", ylab="Resource Availability", lwd=2)
     
     maxy<-min(max(Sp1N,Sp2N),100)
     plot(Sp1N~seq(1:100), ylim=c(0,maxy), type="l", col="#E69F00", xlab="time", ylab="Population Size (N)", lwd=2)
     points(Sp2N~seq(1:100), type="l", col="#56B4E9", lwd=2)
     
+<<<<<<< HEAD
+=======
+    #plot(comp1~seq(1:99), type="l")
+    #points(comp2~seq(1:99), type="l")
+    
+    #plot(resp1~seq(1:99), type="l")
+    #points(resp2~seq(1:99), type="l")
+>>>>>>> 2fdbc6bcae8322ab271e5a78e785c01789e9f32e
     
     
   })
