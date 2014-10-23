@@ -35,9 +35,9 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                                 
                                 sliderInput("surv",
                                             label=c("The proportion of seeds surviving in the seed bank:"),
-                                            min = 0,
+                                            min = .9,
                                             max = 1.0,
-                                            value = 1, step=0.1),
+                                            value = 1, step=0.01),
                                 
                                 helpText("*This wasn't a part of the clasroom acitvity")
                                 
@@ -47,7 +47,7 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                               mainPanel(
                                 plotOutput("popGrow"),
                                 br(),
-                                helpText("If the line seems to reach zero but pops up again, it is because the population got very close to zero but not exactly.")
+                                helpText("If the line seems to reach zero but pops up again, it is because the population got very close to zero but not exactly. The line will disappear when it actually equals zero.")
                 
                               ))),
                    
@@ -87,20 +87,27 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                                 
                                 helpText("*Seeds probably don't survive forever in the seedbank"),
                                 
-                                sliderInput("surv",
+                                sliderInput("surv1",
                                             label=c("The proportion of seeds surviving in the seed bank:"),
-                                            min = 0,
+                                            min = .9,
                                             max = 1.0,
-                                            value = 1, step=0.1) ,
+                                            value = 1, step=0.01) ,
                                 
                                 helpText("*This wasn't a part of the clasroom acitvity")
                                 
+                               
                               ),
                               
                               # Show a plot of the generated distribution
                               mainPanel(
                                 plotOutput("popGrow2"),
                                 br(),
-                                helpText("If the line seems to reach zero but pops up again, it is because the population got very close to zero but not exactly.")
+                                helpText("If the line seems to reach zero 
+                                         but pops up again, it is because 
+                                         the population got very close to 
+                                         zero but not exactly. The line will 
+                                         disappear when it actually equals 
+                                         zero.")
                                 
-                              )))))
+                              ))
+                            )))
