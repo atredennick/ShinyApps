@@ -8,8 +8,10 @@ library(shiny)
 library(markdown)
 ?column
 shinyUI(navbarPage("Bet Hedging Tutorial",
+                   
                    tabPanel("One species",
-                          column(4, 
+                            helpText("** At first the application will take time to load. This process may take longer with more users. If the app screen dims, the computer is working on the change you made. If the app freezes, you may need to fiddle with it to get it working again."),
+                            column(4, 
                               wellPanel(
                                 h4("Environmental Effects on Fecundity"),
                                 
@@ -50,9 +52,13 @@ shinyUI(navbarPage("Bet Hedging Tutorial",
                                 br(),
                                 helpText("If the line seems to reach zero but pops up again, it is because the population got very close to zero but not exactly. The line will disappear when it actually equals zero.")
                 
-                              ))),
+                              ))
+                          
+                          ),
+                   
                    
                    tabPanel("Two species comparison",
+                            helpText("** At first the application will take time to load. This process may take longer with more users. If the app screen dims, the computer is working on the change you made. If the app freezes, you may need to fiddle with it to get it working again."),
                             column(4, 
                               wellPanel(
                                 h4("Environmental Effects on Fecundity"),
