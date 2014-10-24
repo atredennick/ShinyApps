@@ -68,7 +68,7 @@ shinyServer(function(input, output, session) {
                   no = 0,
                   yes = input$a12) 
     
-
+# This is noted to be incorrect because K and aii serve the same purpose. Perhaps modify to change K w/o and aii or ajj?
     for (i in 1:99){Sp1N[i+1]<-Sp1N[i]+Sp1N[i]*Sp1R*((K-Sp1N[i]-Sp1N[i]*a11-Sp2N[i]*a21)/K)
                     Sp2N[i+1]<-Sp2N[i]+Sp2N[i]*Sp2R*((K-Sp2N[i]-Sp2N[i]*a22-Sp1N[i]*a12)/K)}
     
