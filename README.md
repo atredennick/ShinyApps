@@ -6,6 +6,9 @@ These are shiny apps made for students learning Ecological Theory
 - Bet Hedging is a teaching module for an annual plant species (germination rate and seedbank survival vary; population size is tracked)
   - Deployed on: https://brittzinator.shinyapps.io/BetHedgingApp/
 
+- Competition App 
+  - Deployed on: https://brittzinator.shinyapps.io/CompetitionApp/
+
 - Chesson is a teaching module for ecological niche theory
   - Still in production
 
