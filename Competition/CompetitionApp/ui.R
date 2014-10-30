@@ -36,15 +36,15 @@ shinyUI(navbarPage("Competition Coef Tutorial",
                                 sliderInput("meanSize1",
                                             label=c("Mean Size"),
                                             min = .1,
-                                            max = 1.5,
-                                            value = .8, step=.1),
+                                            max = 1,
+                                            value = .8, step=.01),
                                 br(),
                                 
                                 sliderInput("meanDist1",
                                             label=c("Mean Distance"),
-                                            min = 1,
-                                            max = 10.0,
-                                            value = 1, step=1),
+                                            min = 0,
+                                            max = 3.0,
+                                            value = 1, step=.1),
                                 br(),
                                 
                                 sliderInput("Seed1",
@@ -69,11 +69,11 @@ shinyUI(navbarPage("Competition Coef Tutorial",
                             
                             tabPanel("Gravity Model",
                                      helpText("** At first the application will take time to load. This process may take longer with more users. If the app screen dims, the computer is working on the change you made. If the app freezes, you may need to fiddle with it to get it working again."),
-                                     column(4, 
-                                            wellPanel(
+                                     
+                                     sidebarPanel(
                                               h4("Text"),
                                               
-                                              helpText("C = alpha*size(i)*size(j)/dist"),
+                                              helpText("C = size(i)*size(j)/alpha*dist"),
                                               
                                               sliderInput("sizei",
                                                           label=c("Size i"),
@@ -103,8 +103,8 @@ shinyUI(navbarPage("Competition Coef Tutorial",
                                               sliderInput("meanSize2",
                                                           label=c("Mean Size"),
                                                           min = 0,
-                                                          max = 3,
-                                                          value = .8, step=.1),
+                                                          max = 1,
+                                                          value = .8, step=.01),
                                               br(),
                                               
                                               sliderInput("meanDist2",
@@ -120,16 +120,16 @@ shinyUI(navbarPage("Competition Coef Tutorial",
                                                           max = 100.0,
                                                           value = 1, step=1),
                                               br()
-                                            )),
+                                            ),
                                      
                                      # Show a plot of the generated distribution
-                                     column(8, 
-                                            wellPanel(
+                                    
+                                            mainPanel(
                                               plotOutput("grav"),
                                               br(),
                                               helpText("text.")
                                               
-                                            )))
+                                            ))
                           
                           ))
                    

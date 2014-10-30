@@ -105,7 +105,7 @@ output$grav<- renderPlot({
   abline(h=0)
   abline(v=0)
 
-  Cvec<-sizeN*sizei*alpha/distN
+  Cvec<-(sizeN*sizei)/(alpha*distN)
   C<-round(sum(Cvec),3)
   mtext(bquote(C==.(C)), adj=1, padj=0)
   
@@ -114,8 +114,6 @@ output$grav<- renderPlot({
   plot(Csim~distSim, type="l")
   text(Cvec~distN, labels = Nseq)
   
-  C<-round(sum(alpha*sizei*sizeN/distN),3)
-  mtext(bquote(C==.(C)), adj=1, padj=0)
   
   
 })

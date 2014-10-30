@@ -20,4 +20,4 @@ runApp("CompetitionApp")
 #  token="token", 
 #  secret="secret")
 
-deployApp("BetHedgingApp")
+deployApp("CompetitionApp")
