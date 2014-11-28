@@ -1,5 +1,5 @@
 #Set your working drive here so that the folder of your app is in the directory
-setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/Competition")
+setwd("C:/Users/A02077138/Documents/ShinyApps/SpatialCompetition")
 
 #If you don't have devtools or shinyapps:
 #install.packages('devtools')

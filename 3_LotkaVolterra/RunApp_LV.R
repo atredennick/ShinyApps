@@ -1,7 +1,6 @@
 #Set your working drive here so that the folder of your app is in the directory
 #Here are my funny paths:
-setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/3_LotkaVolterra")
-
+setwd("C:/Users/A02077138/Documents/ShinyApps/3_LotkaVolterra")
 
 #If you don't have devtools or shinyapps:
 #install.packages('devtools')
