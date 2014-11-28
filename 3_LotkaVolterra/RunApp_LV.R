@@ -1,7 +1,7 @@
 #Set your working drive here so that the folder of your app is in the directory
 #Here are my funny paths:
-setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/Chesson")
-#setwd("C:/Users/Britta/Dropbox/A.weekender/GitHub/Sandbox/ShinyApps/Chesson")
+setwd("C:/Users/A02077138/Documents/GitHub/ShinyApps/3_LotkaVolterra")
+
 
 #If you don't have devtools or shinyapps:
 #install.packages('devtools')
@@ -12,8 +12,8 @@ library(devtools)
 library(shinyapps)
 
 #Run app locally
-runApp("ChessonApp")
-runApp("ChessonApp", display.mode = "showcase")
+runApp("LVApp")
+#runApp("LVApp", display.mode = "showcase")
 
 #Deploy app; 
 
@@ -23,4 +23,4 @@ runApp("ChessonApp", display.mode = "showcase")
 #  token="token", 
 #  secret="secret")
 
-deployApp("ChessonApp")
+deployApp("LVApp")
